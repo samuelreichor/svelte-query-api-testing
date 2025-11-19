@@ -3,6 +3,9 @@
 	import CraftNotImplemented from '$lib/components/CraftNotImplemented.svelte';
 	import Home from '$lib/content/pages/Home.svelte';
 	import HeadlineBlock from '$lib/content/blocks/HeadlineBlock.svelte';
+	import { getEntry } from './data.remote'
+
+	const entry = $derived(await getEntry());
 
 	const { data } = $props();
 
@@ -22,4 +25,7 @@
 
 <div>
 	<CraftPage content={data.page} {config} />
+	<pre>
+		{JSON.stringify(entry, null, 2)}
+	</pre>
 </div>
